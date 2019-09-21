@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import './Huntsearch.css';
 
 const Huntsearch = () => {
   const [name, setName] = useState('')
@@ -6,11 +7,10 @@ const Huntsearch = () => {
     setName(e.target.value)
   }
   return (
-    <div className="container">
-      <h1>Yre's clan hunts</h1>
+    <div className="Huntsearch container">
       <form>
-        <label htmlFor="name">Hunt name</label>
-        <input type="text" name="name" value={name} onChange={changeName} />
+        <label htmlFor="name">Hunt name:</label>
+        <input className="searchfield" type="text" name="name" value={name} onChange={changeName} />
       </form>
     </div>
   );

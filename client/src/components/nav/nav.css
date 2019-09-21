@@ -1,5 +1,5 @@
 .Nav {
-  padding: 20px;
+  padding: 15px 20px;
   background: #009999;
 }
 
@@ -8,4 +8,5 @@
   font-weight: bold;
   font-family: 'PT Sans', sans-serif;
   font-size: 2rem;
+  text-align: center;
 }
