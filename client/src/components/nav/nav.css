@@ -1,0 +1,11 @@
+.Nav {
+  padding: 20px;
+  background: #009999;
+}
+
+.Nav .logo {
+  color: white;
+  font-weight: bold;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 2rem;
+}

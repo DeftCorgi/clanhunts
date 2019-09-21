@@ -1,9 +1,10 @@
 import React from 'react';
+import './nav.css';
 
 const Nav = () => {
   return (
-    <nav>
-      THis is a navbar
+    <nav className="Nav">
+      <div className="logo">Yre's Hunts</div>
     </nav>
   );
 };

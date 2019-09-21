@@ -1,16 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Nav from '../nav/Nav';
+import Huntsearch from '../huntsearch/Huntsearch';
+import './App.css';
 
 function App() {
+  const [name, setName] = useState('')
   return (
     <div className="App">
       <Nav/>
       <main>
-        <h1>Yre's clan hunts</h1>
-        <form>
-          <label htmlFor="name"></label>
-          <input type="text" name="name"/>
-        </form>
+        <Huntsearch />
       </main>
     </div>
   );
