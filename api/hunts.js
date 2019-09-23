@@ -1,7 +1,7 @@
-const hunts = require('../data/data.json');
+const hunts = require('../data/hunts.json');
 
 module.exports = app => {
-  app.get('/api/hunts/', () => {
-    // get list of all hunts
+  app.get('/api/hunts/', (req, res) => {
+    res.send(hunts);
   });
 };
