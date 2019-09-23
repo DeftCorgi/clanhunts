@@ -1,45 +1,34 @@
 import React, {useState} from 'react';
 import './Huntsearch.css';
-import SelectSearch from 'react-select-search';
+import Select from 'react-select';
 
 const huntList = [
-  { name: 'Swedish', value: 'sv' },
-  { name: 'English', value: 'en' },
-  { name: 'Spanish', value: 'es' },
+  { label: 'Swedish', value: 'sv' },
+  { label: 'English', value: 'en' },
+  { label: 'Spanish', value: 'es' },
+  { label: 'Swedish', value: 'sv' },
+  { label: 'English', value: 'en' },
+  { label: 'Spanish', value: 'es' },
+  { label: 'Swedish', value: 'sv' },
+  { label: 'English', value: 'en' },
+  { label: 'Spanish', value: 'es' },
+  
 ];
 
 const Huntsearch = () => {
   const [name, setName] = useState('')
   const [hunts] = useState(huntList)
-  const [focus, setFocus] = useState(true)
+  const [selected, setSelected] = useState('sv');
 
-  const renderOption = (option, state, props) => {
-    const style = {
-      display: focus || 'none' 
-    }
-    return <div className="option" style={style}>{option.name}</div>
-  }
+  const onSelect = (value) => setSelected(value)
 
-  const onFocus = () => setFocus(true)
-  const onBlur = () => setFocus(false)
-
-  const changeName = (e) => {
-    setName(e.target.value)
-  }
   return (
     <div className="Huntsearch container">
+      <div className="tagline">
+        <h2>Enter your hunt and we'll do the rest.</h2>
+      </div>
       <form>
-        <SelectSearch className="searchfield" 
-                      type="text" 
-                      name="name" 
-                      options={hunts} 
-                      placeholder="Hunt search..." 
-                      multiple={false} 
-                      autofocus={true} 
-                      renderOption={renderOption}
-                      onFocus={onFocus}
-                      onBlur={onBlur}  
-                      />
+        <Select options={hunts} onChange={onSelect} placeholder={"Hunt name..."}/>
       </form>
     </div>
   );
