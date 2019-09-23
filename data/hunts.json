@@ -1,0 +1,17 @@
+{
+  "Archaeornis": {
+    "coordinates": ["15,12", "14,7"],
+    "location": "Coerthas Western Highlands",
+    "target": 3
+  },
+  "Bergthurs": {
+    "coordinates": ["32,24"],
+    "location": "Coerthas Western Highlands",
+    "target": 2
+  },
+  "Deepeye": {
+    "coordinates": ["30,31"],
+    "location": "Coerthas Western Highlands",
+    "target": 3
+  }
+}
