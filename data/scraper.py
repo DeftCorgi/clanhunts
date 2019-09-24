@@ -1,5 +1,6 @@
 import requests
 import re
+import json
 from bs4 import BeautifulSoup
 
 url = 'https://ffxiv.consolegameswiki.com/wiki/Clan_Hunt'
@@ -28,7 +29,7 @@ for i, table in enumerate(tables):
         hunt_name = data[0].get_text().strip()
         coordinates = parse_coordinates(data[1].get_text())
         amount = data[4].get_text().strip()
-        map = maps[id]
+        map = maps[i]
 
         # create a hunt obejct and add it to hunts dict
         hunts[hunt_name] = {
@@ -36,3 +37,6 @@ for i, table in enumerate(tables):
             "coordinates": coordinates,
             "amount": amount
         }
+
+file = open('./hunts.json', 'w')
+print(json.dump(hunts, file))
