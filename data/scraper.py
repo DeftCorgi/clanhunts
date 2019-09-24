@@ -15,11 +15,17 @@ hunts = {}
 
 
 def parse_coordinates(s):
-    coordinates = s.split('&')
-    for i, c in enumerate(coordinates):
+    coordinates = []
+    for i, c in enumerate(s.split('&')):
         c = re.sub("x|y|\(|\)| ", "", c)
-        coordinates[i] = c.split(',')
+        coordinates.append([])
+        for coord in c.split(',')[:2]:
+            coordinates[i].append(float(coord))
     return coordinates
+
+
+def parse_amount(s):
+    return None if s == "" else int(s)
 
 
 for i, table in enumerate(tables):
@@ -28,7 +34,7 @@ for i, table in enumerate(tables):
         data = tr.find_all('td')
         hunt_name = data[0].get_text().strip()
         coordinates = parse_coordinates(data[1].get_text())
-        amount = data[4].get_text().strip()
+        amount = parse_amount(data[4].get_text().strip())
         map = maps[i]
 
         # create a hunt obejct and add it to hunts dict
