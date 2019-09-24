@@ -39,4 +39,4 @@ for i, table in enumerate(tables):
         }
 
 file = open('./hunts.json', 'w')
-print(json.dump(hunts, file))
+json.dump(hunts, file)
