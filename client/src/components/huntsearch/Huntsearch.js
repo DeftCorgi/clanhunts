@@ -1,24 +1,19 @@
 import React, {useState} from 'react';
 import './Huntsearch.css';
 import Select from 'react-select';
-
-const huntList = [
-  { label: 'Swedish', value: 'sv' },
-  { label: 'English', value: 'en' },
-  { label: 'Spanish', value: 'es' },
-  { label: 'Swedish', value: 'sv' },
-  { label: 'English', value: 'en' },
-  { label: 'Spanish', value: 'es' },
-  { label: 'Swedish', value: 'sv' },
-  { label: 'English', value: 'en' },
-  { label: 'Spanish', value: 'es' },
-  
-];
+import axios from 'axios';
 
 const Huntsearch = () => {
   const [name, setName] = useState('')
-  const [hunts] = useState(huntList)
+  const [hunts, setHunts] = useState({})
   const [selected, setSelected] = useState('sv');
+
+  const loadHunts = async () => {
+    const result = await axios.get('/api/hunts');
+    setHunts(result);
+  }
+
+  loadHunts();
 
   const onSelect = (value) => setSelected(value)
 
