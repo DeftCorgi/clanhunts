@@ -19,7 +19,7 @@ for span in soup.select('h3 span.mw-headline'):
     maps.append(span.get_text().strip())
 
 # object to store our data
-hunts = {}
+hunts = []
 
 
 def parse_coordinates(s):
@@ -37,9 +37,10 @@ def parse_amount(s):
     # return an integer amount or null in the json file
     return None if s == "" else int(s)
 
-
+counter = -1
 for i, table in enumerate(tables):
     for tr in table.find_all('tr')[1:]:
+        counter +=1
         # parse data from tr element
         data = tr.find_all('td')
         hunt_name = data[0].get_text().strip()
@@ -48,11 +49,13 @@ for i, table in enumerate(tables):
         map = maps[i]
 
         # create a hunt obejct and add it to hunts dict
-        hunts[hunt_name] = {
+        hunts.append({
+            "id": counter,
+            "label": hunt_name,
             "map": map,
             "coordinates": coordinates,
             "amount": amount
-        }
+        })
 
 file = open('./hunts.json', 'w')
 json.dump(hunts, file)
