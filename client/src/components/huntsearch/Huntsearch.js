@@ -13,7 +13,7 @@ const Huntsearch = () => {
     setHunts(result);
   }
 
-  loadHunts();
+  // loadHunts();
 
   const onSelect = (value) => setSelected(value)
 
