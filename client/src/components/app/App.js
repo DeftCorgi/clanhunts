@@ -1,16 +1,18 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Nav from '../nav/Nav';
 import Huntsearch from '../huntsearch/Huntsearch';
 import './App.css';
+import { HuntProvider } from '../huntcontext/HuntContext';
 
 function App() {
-  const [name, setName] = useState('')
   return (
     <div className="App">
-      <Nav/>
-      <main>
-        <Huntsearch />
-      </main>
+      <HuntProvider>
+        <Nav/>
+        <main>
+          <Huntsearch />
+        </main>
+      </HuntProvider>
     </div>
   );
 }

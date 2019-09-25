@@ -1,19 +1,11 @@
-import React, {useState} from 'react';
-import './Huntsearch.css';
+import React, {useState, useContext} from 'react';
+import { HuntContext } from '../huntcontext/HuntContext';
 import Select from 'react-select';
-import axios from 'axios';
+import './Huntsearch.css';
 
 const Huntsearch = () => {
-  const [name, setName] = useState('')
-  const [hunts, setHunts] = useState({})
-  const [selected, setSelected] = useState('sv');
-
-  const loadHunts = async () => {
-    const result = await axios.get('/api/hunts');
-    setHunts(result);
-  }
-
-  // loadHunts();
+  const [hunts] = useContext(HuntContext)
+  const [selected, setSelected] = useState('');
 
   const onSelect = (value) => setSelected(value)
 
@@ -23,7 +15,12 @@ const Huntsearch = () => {
         <h2>Enter your hunt and we'll do the rest.</h2>
       </div>
       <form>
-        <Select options={hunts} onChange={onSelect} placeholder={"Hunt name..."}/>
+        <Select options={hunts} 
+                value={selected} 
+                onChange={onSelect} placeholder={"Hunt name..."} 
+                isMulti={false} 
+                getOptionLabel={(option) => option.name}
+                getOptionValue={(option) => option.id}/>
       </form>
     </div>
   );
